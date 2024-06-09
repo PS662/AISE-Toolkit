@@ -4,8 +4,8 @@ This repository is a collection of notebooks, scripts, and educational resources
 
 ## Structure
 
-- **Notebooks**: Jupyter notebooks focused on different AI domains such as computer vision and machine learning.
-- **PDFs**: Contains educational PDFs, particularly related to Mathematics for AI.
+- **Notebooks**: Jupyter notebooks focused on different domains.
+- **PDFs**: Contains PDFs.
 - **Scripts**: Useful scripts for web development, bash scripting, and Python programming.
 
 Each directory has its own README with more detailed information on the contents and usage instructions.
