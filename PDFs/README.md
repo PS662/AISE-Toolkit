@@ -4,4 +4,4 @@ Educational resources in PDF format.
 
 ## Contents
 
-- **Mathematics for AI**: Mathematical foundations necessary for understanding and working in AI.
+- **MSAI_Coursework**: Collection of assignments from masters coursework.
