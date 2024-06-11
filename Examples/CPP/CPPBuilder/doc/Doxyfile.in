@@ -1,0 +1,8 @@
+# Doxyfile.in
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/docs
+INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/Builder1 @CMAKE_CURRENT_SOURCE_DIR@/Builder2
+FILE_PATTERNS          = *.cpp *.h
+RECURSIVE              = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+DOT_CLEANUP            = YES

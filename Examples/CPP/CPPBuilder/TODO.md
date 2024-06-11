@@ -1,0 +1,8 @@
+- [ ] Add singletons
+- [ ] Add Algos
+- [ ] Add benchmarking
+- [ ] Add pimpl
+- [ ] Add system design implementations within this framework
+- [ ] Add DBs
+- [ ] SWIG and Python 
+- [ ] Add cmake options

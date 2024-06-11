@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 project(MultiBuilderProject)
 
+enable_testing()  # Enable testing at the project root
+
 # Include the common CMake configurations
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # Include Doxygen target setup if needed
+include(configuration)
 include(library)
 
 # Add subdirectories for each builder
 add_subdirectory(Builder1)
 add_subdirectory(Builder2)
+
+# Google Test support
+add_google_test_support()
 
 # Documentation with Doxygen
 find_package(Doxygen)

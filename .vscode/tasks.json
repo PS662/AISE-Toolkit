@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Documentation",
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build --target doc_doxygen",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Tests",
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build && ctest --verbose",
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,8 +1,23 @@
+#include <sstream>
+#include <iostream>
+
 #include <gtest/gtest.h>
+
 #include "sample1.hpp"
 
 TEST(SampleTest, FunctionalityTest) {
-    Sample sample;
-    // Add test expectations
-    EXPECT_EQ(sample.display_message(), "Hello from sample1 class2!"); // Adjust as necessary
+    Sample1 sample;
+
+    // Redirect std::cout
+    std::stringstream buffer;
+    std::streambuf *prevcoutbuf = std::cout.rdbuf(buffer.rdbuf());
+
+    // Call the function
+    sample.display_message();
+
+    // Restore original buffer before assertion
+    std::cout.rdbuf(prevcoutbuf);
+
+    // Check the output
+    EXPECT_EQ(buffer.str(), "Hello from Sample class1!\n"); // Adjust as necessary, include '\n' if your message ends with std::endl
 }

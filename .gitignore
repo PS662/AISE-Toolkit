@@ -38,4 +38,3 @@ wheels/
 *.log
 
 .DS_Store
-.vscode
