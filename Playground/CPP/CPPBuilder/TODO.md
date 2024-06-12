@@ -1,9 +1,12 @@
-- [ ] Add coverage and finish tests
-- [ ] Add singletons
+- [x] Add cmake options
+-- [ ] Only install required libs, deps should not be pulled in.
 - [ ] Add Algos
-- [ ] Add benchmarking
+- - [x] DFS
+-- [ ] More Graphs
 - [ ] Add pimpl
+- [ ] Add singletons, other designs
 - [ ] Add system design implementations within this framework
+- [ ] Add benchmarking
 - [ ] Add DBs
 - [ ] SWIG and Python 
-- [ ] Add cmake options
+- [ ] Add coverage and finish tests

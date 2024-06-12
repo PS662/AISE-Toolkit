@@ -1,12 +1,12 @@
 
-# MultiBuilderProject
+# CPPBuilderProject
 
 ## Overview
-**MultiBuilderProject** is a modular C++ project designed to demonstrate a flexible approach using multiple builders. Each builder corresponds to a specific component or library, which can be built independently and contributes to the overall functionality of the project.
+**CPPBuilderProject** is a modular C++ project designed to demonstrate a flexible approach using multiple builders. Each builder corresponds to a specific component or library, which can be built independently and contributes to the overall functionality of the project.
 
 ## Project Structure
 ```
-MultiBuilderProject/
+CPPBuilderProject/
 │
 ├── Builder1/       # Sources, headers, and tests for Builder1
 │   ├── src/        # Source files

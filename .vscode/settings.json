@@ -1,3 +1,12 @@
 {
+    "cmake.configureArgs": [
+        "-DCPPBuilder_INSTALL_PATH=/mnt/c/Users/singh/Documents/Sources/AISE-Toolkit/Playground/Toys/CPPBuilderDemo/CPPBuilderLib",
+        "-DWITH_Builder1=ON",
+        "-DWITH_Builder2=ON",
+        "-DWITH_Algorithms=ON",
+        "-DWITH_TESTS=ON",
+        "-DWITH_DOCS=ON"
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/build",
     "cmake.sourceDirectory": "/mnt/c/Users/singh/Documents/Sources/AISE-Toolkit/Playground/CPP/CPPBuilder"
 }

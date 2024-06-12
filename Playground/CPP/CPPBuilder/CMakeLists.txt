@@ -1,32 +1,45 @@
 cmake_minimum_required(VERSION 3.10)
-project(MultiBuilderProject)
+project(CPPBuilderProject)
 
-enable_testing()  # Enable testing at the project root
-
-# Include the common CMake configurations
+# Include the configuration
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-# Include Doxygen target setup if needed
-include(configuration)
 include(library)
+include(configuration)
 
-# Add subdirectories for each builder
-add_subdirectory(Builder1)
-add_subdirectory(Builder2)
+# Google Test support, conditional on WITH_TESTS flag
+if(WITH_TESTS)
+    enable_testing()
+    add_google_test_support()
+endif()
 
-# Google Test support
-add_google_test_support()
+# Conditional inclusion of components
+if (WITH_Builder1)
+    add_subdirectory(Builder1)
+endif()
 
-# Documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-  set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
-  set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+if (WITH_Builder2)
+    add_subdirectory(Builder2)
+endif()
 
-  configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-  add_custom_target(doc_doxygen ALL
-    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "Generating API documentation with Doxygen"
-    VERBATIM)
+if (WITH_Algorithms)
+    add_subdirectory(Algorithms)
+endif()
+
+# Documentation with Doxygen, conditional on WITH_DOCS
+if(WITH_DOCS)
+    find_package(Doxygen)
+    if(DOXYGEN_FOUND)
+      set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in)
+      set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+      configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+      add_custom_target(doc_doxygen ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM)
+        
+      install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/doc/
+              DESTINATION share/doc/cppbuilderproject)
+    endif()
 endif()

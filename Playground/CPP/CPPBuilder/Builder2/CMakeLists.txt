@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(Builder2)
-# git rm --cached -r .
-# git reset --hard
-# Set the output directory for libraries
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+
+# Set the output directory for libraries and executables within the project
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/builder2/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/builder2/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/builder2/bin)
 
 # Generate the shared library from sources
 # Name the library after the project, which is 'Builder2'
@@ -17,7 +18,25 @@ target_link_libraries(example_sample3 Builder2)
 add_executable(example_sample4 examples/example_sample4.cpp)
 target_link_libraries(example_sample4 Builder2)
 
-# Setup tests
-add_executable(sample3_tests tests/sample3_tests.cpp)
-target_link_libraries(sample3_tests Builder2 gtest_main)
-add_test(NAME sample3_tests COMMAND sample3_tests)
+# Installation rules for Builder2
+install(TARGETS Builder2 example_sample3 example_sample4
+        RUNTIME DESTINATION bin  # For executables
+        LIBRARY DESTINATION lib  # For shared libraries
+        ARCHIVE DESTINATION lib) # For static libraries
+
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        DESTINATION include/Builder2)
+
+if(WITH_TESTS)
+    # Setup tests
+    add_executable(sample3_tests tests/sample3_tests.cpp)
+    target_link_libraries(sample3_tests Builder2 gtest_main)
+    add_test(NAME sample3_tests COMMAND sample3_tests)
+    
+    add_executable(sample4_tests tests/sample4_tests.cpp)
+    target_link_libraries(sample4_tests Builder2 gtest_main)
+    add_test(NAME sample4_tests COMMAND sample4_tests)
+    
+    install(TARGETS sample3_tests sample4_tests 
+            RUNTIME DESTINATION bin/tests)
+endif()
