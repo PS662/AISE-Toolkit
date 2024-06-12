@@ -1,7 +1,3 @@
-# PDFs
+# Docs
 
-Educational resources in PDF format.
-
-## Contents
-
-- **MSAI_Coursework**: Collection of assignments from masters coursework.
+Educational resources from various sources.

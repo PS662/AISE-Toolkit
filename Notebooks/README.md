@@ -1,6 +1,6 @@
 # Notebooks
 
-This directory contains Jupyter notebooks organized by AI subfields.
+This directory contains Jupyter notebooks organized by domain.
 
 ## Contents
 
