@@ -1,3 +1,4 @@
+- [ ] Add coverage and finish tests
 - [ ] Add singletons
 - [ ] Add Algos
 - [ ] Add benchmarking
