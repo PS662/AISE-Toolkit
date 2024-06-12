@@ -68,7 +68,7 @@ To generate the project documentation using Doxygen:
 
 2. **Run the documentation build target:**
     ```bash
-    cmake --build . --target doc
+    cmake --build . --target doc_doxygen
     ```
 
 Documentation will be available in the `docs/` directory within the build folder.

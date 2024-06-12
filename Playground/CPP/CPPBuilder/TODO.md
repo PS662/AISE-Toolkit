@@ -1,8 +1,8 @@
 - [x] Add cmake options
--- [ ] Only install required libs, deps should not be pulled in.
+- - [ ] Only install required libs, deps should not be pulled in.
 - [ ] Add Algos
 - - [x] DFS
--- [ ] More Graphs
+- - [ ] More Graphs
 - [ ] Add pimpl
 - [ ] Add singletons, other designs
 - [ ] Add system design implementations within this framework
