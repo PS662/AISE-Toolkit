@@ -38,7 +38,7 @@ To build the project, follow these steps:
 1. **Clone the repository and navigate to the project directory:**
     ```bash
     git clone https://github.com/PS662/AISE-Toolkit
-    cd AISE-Toolkit/Examples/CPP/CPPBuilder
+    cd AISE-Toolkit/Playground/CPP/CPPBuilder
     ```
 
 2. **Generate the build system:**
