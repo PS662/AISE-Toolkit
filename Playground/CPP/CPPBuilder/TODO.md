@@ -1,5 +1,5 @@
 - [x] Add cmake options
-- - [ ] Only install required libs, deps should not be pulled in.
+- - [x] Only install required libs, deps should not be pulled in.
 - [ ] Add Algos
 - - [x] DFS
 - - [ ] More Graphs
