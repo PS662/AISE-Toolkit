@@ -1,26 +1,26 @@
-// dfs.cpp
-#include "dfs.hpp"
+// algorithms.cpp
+#include "algorithms.hpp"
 
-DFS::DFS(string str) : name(str) {}
+Algorithms::Algorithms(string str) : name(str) {}
 
-DFS::~DFS() {
-    for (DFS* child : children) {
+Algorithms::~Algorithms() {
+    for (Algorithms* child : children) {
         delete child;
     }
 }
 
-vector<string> DFS::depthFirstSearch_Variant1(vector<string> *array) {
+vector<string> Algorithms::depthFirstSearch_Variant1(vector<string>* array) {
     if (children.empty())
         return {};
 
     array->push_back(name);
 
-    for (DFS* child : children) {
-        vector<DFS*> stack;
+    for (Algorithms* child : children) {
+        vector<Algorithms*> stack;
         stack.push_back(child);
 
         while (!stack.empty()) {
-            DFS* node = stack.back();
+            Algorithms* node = stack.back();
             stack.pop_back();
             array->push_back(node->name);
 
@@ -32,16 +32,16 @@ vector<string> DFS::depthFirstSearch_Variant1(vector<string> *array) {
     return *array;
 }
 
-vector<string> DFS::depthFirstSearch_Variant2(vector<string> *array) {
+vector<string> Algorithms::depthFirstSearch_Variant2(vector<string>* array) {
     array->push_back(name);
-    for (DFS* child : children) {
+    for (Algorithms* child : children) {
         child->depthFirstSearch_Variant2(array);
     }
     return *array;
 }
 
-DFS* DFS::addChild(string name) {
-    DFS* child = new DFS(name);
+Algorithms* Algorithms::addChild(string name) {
+    Algorithms* child = new Algorithms(name);
     children.push_back(child);
     return this;
 }

@@ -1,9 +1,9 @@
-// example_dfs.cpp
-#include "dfs.hpp"
+// example_algorithms.cpp
+#include "algorithms.hpp"
 #include <iostream>
 
 int main() {
-    DFS root("root");
+    Algorithms root("root");
     root.addChild("child1")->addChild("grandchild1");
     root.addChild("child2");
 
