@@ -4,6 +4,7 @@
 
 ### ADDITIONS
 - [x] Add cmake options
+- [ ] CPack
 - [ ] Add Algos
 - - [x] DFS
 - - [ ] More Algos
@@ -17,3 +18,4 @@
 - [ ] Add Cutlass example
 - - [ ] Add self implementation template
 - [ ] Add system design implementations within this framework
+- [ ] CICD, Actions

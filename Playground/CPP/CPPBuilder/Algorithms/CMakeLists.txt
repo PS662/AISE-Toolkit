@@ -8,14 +8,15 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/algorithms/bin)
 
 # Generate the shared library from sources
 # Name the library after the project, which is 'Algorithms'
-add_library(Algorithms SHARED src/dfs.cpp)
+add_library(Algorithms SHARED src/algorithms.cpp)
 target_include_directories(Algorithms PUBLIC include)
 
+# Conditional build for examples
 if(WITH_EXAMPLES)
     # Add executables for examples
-    add_executable(example_dfs examples/example_dfs.cpp)
-    target_link_libraries(example_dfs Algorithms)
-    install(TARGETS example_dfs
+    add_executable(example_algorithms examples/example_algorithms.cpp)
+    target_link_libraries(example_algorithms Algorithms)
+    install(TARGETS example_algorithms
             RUNTIME DESTINATION bin)
 endif()
 
@@ -27,11 +28,12 @@ install(TARGETS Algorithms
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
         DESTINATION include/Algorithms)
 
+# Conditional build for tests
 if (WITH_TESTS)
     # Setup tests
-    add_executable(dfs_tests tests/dfs_tests.cpp)
-    target_link_libraries(dfs_tests Algorithms gtest_main)
-    add_test(NAME dfs_tests COMMAND dfs_tests)
-    install(TARGETS dfs_tests 
+    add_executable(algorithms_test tests/algorithms_test.cpp)
+    target_link_libraries(algorithms_test Algorithms gtest_main)
+    add_test(NAME algorithms_test COMMAND algorithms_test)
+    install(TARGETS algorithms_test 
             RUNTIME DESTINATION bin/tests)
 endif()
