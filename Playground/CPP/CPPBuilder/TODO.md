@@ -5,8 +5,14 @@
 - - [ ] More Graphs
 - [ ] Add pimpl
 - [ ] Add singletons, other designs
-- [ ] Add system design implementations within this framework
 - [ ] Add benchmarking
 - [ ] Add DBs
-- [ ] SWIG and Python 
+- [ ] SWIG
 - [ ] Add coverage and finish tests
+
+- [ ] Add template
+- [ ] Add Cutlass example
+- - [ ] Add self implementationa
+- - [ ] Benchmark GEMM and CONV
+
+- [ ] Add system design implementations within this framework

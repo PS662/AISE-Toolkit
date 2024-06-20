@@ -28,11 +28,12 @@ endif()
 
 # Define preprocessor macros globally
 # Define options for enabling or disabling components of the project
-option(WITH_Builder1 "Build the Builder1 component" ON)
-option(WITH_Builder2 "Build the Builder2 component" ON)
-option(WITH_Algorithms "Build the Algorithms component" ON)
-option(WITH_TESTS "Enable building of tests." ON)
-option(WITH_DOCS "Enable Documentation generation." ON)
+option(WITH_Builder1 "Build the Builder1 component" OFF)
+option(WITH_Builder2 "Build the Builder2 component" OFF)
+option(WITH_Algorithms "Build the Algorithms component" OFF)
+option(WITH_EXAMPLES "Build with examples" OFF)
+option(WITH_TESTS "Enable building of tests." OFF)
+option(WITH_DOCS "Enable Documentation generation." OFF)
 
 # Add preprocessor definitions based on the options
 if (WITH_Builder1)

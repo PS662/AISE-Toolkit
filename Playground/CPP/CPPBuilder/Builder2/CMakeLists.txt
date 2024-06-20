@@ -11,16 +11,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/builder2/bin)
 add_library(Builder2 SHARED src/sample3.cpp src/sample4.cpp)
 target_include_directories(Builder2 PUBLIC include)
 
-# Add executables for examples
-add_executable(example_sample3 examples/example_sample3.cpp)
-target_link_libraries(example_sample3 Builder2)
+if(WITH_EXAMPLES)
+    # Add executables for examples
+    add_executable(example_sample3 examples/example_sample3.cpp)
+    target_link_libraries(example_sample3 Builder2)
 
-add_executable(example_sample4 examples/example_sample4.cpp)
-target_link_libraries(example_sample4 Builder2)
+    add_executable(example_sample4 examples/example_sample4.cpp)
+    target_link_libraries(example_sample4 Builder2)
+
+    install(TARGETS example_sample3 example_sample4
+            RUNTIME DESTINATION bin)
+endif()
 
 # Installation rules for Builder2
-install(TARGETS Builder2 example_sample3 example_sample4
-        RUNTIME DESTINATION bin  # For executables
+install(TARGETS Builder2
         LIBRARY DESTINATION lib  # For shared libraries
         ARCHIVE DESTINATION lib) # For static libraries
 
