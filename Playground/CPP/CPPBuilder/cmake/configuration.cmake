@@ -56,6 +56,10 @@ if (WITH_DOCS)
   add_definitions(-DENABLE_DOCS)
 endif()
 
+if (WITH_MEYERS_SINGLETON)
+  add_definitions(-DUSE_MEYERS_SINGLETON)
+endif()
+
 # Handling custom installation and build paths
 set(CPPBuilder_INSTALL_PATH "" CACHE PATH "Custom installation path.")
 if(CPPBuilder_INSTALL_PATH)

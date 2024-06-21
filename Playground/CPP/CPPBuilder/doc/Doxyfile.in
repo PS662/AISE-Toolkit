@@ -1,8 +1,7 @@
-# Doxyfile.in
+PROJECT_NAME           = "CPPBuilderProject"
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/docs
-INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/Builder1 @CMAKE_CURRENT_SOURCE_DIR@/Builder2
-FILE_PATTERNS          = *.cpp *.h
+INPUT                  = @CMAKE_SOURCE_DIR@/Builder1 @CMAKE_SOURCE_DIR@/Builder2 @CMAKE_SOURCE_DIR@/Algorithms
+FILE_PATTERNS          = *.hpp *.cpp
 RECURSIVE              = YES
 GENERATE_HTML          = YES
 GENERATE_LATEX         = NO
-DOT_CLEANUP            = YES

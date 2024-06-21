@@ -1,31 +1,18 @@
 #pragma once
 
+#include "base_object.hpp"
 #include <vector>
 #include <string>
 
-using std::vector;
-using std::string;
+class AlgorithmsImpl;
 
-/**
- * @class Algorithms
- * @brief Implements various algorithms.
- *
- * This class allows the creation of a tree structure and performing different algorithms on it.
- */
-class Algorithms {
+class Algorithms : public BaseObject<Algorithms> {
+    friend class AlgorithmsImpl;
 public:
-    string name;
-    vector<Algorithms*> children;
-
-    explicit Algorithms(string str);
-
-    // Variants of depthFirstSearch
-    vector<string> depthFirstSearch_Variant1(vector<string>* array);
-    vector<string> depthFirstSearch_Variant2(vector<string>* array);
-
-    Algorithms* addChild(string name);
-
-    // Destructor
+    Algorithms();
     ~Algorithms();
+
+    std::vector<std::string> depthFirstSearch_Variant1(std::vector<std::string>& array);
+    std::vector<std::string> depthFirstSearch_Variant2(std::vector<std::string>& array);
+    Algorithms& addChild(std::string name);
 };
-;

@@ -1,16 +1,17 @@
-// example_algorithms.cpp
 #include "algorithms.hpp"
 #include <iostream>
+#include <vector>
+#include <string>
 
 int main() {
-    Algorithms root("root");
-    root.addChild("child1")->addChild("grandchild1");
+    Algorithms root;
+    root.addChild("child1").addChild("grandchild1");
     root.addChild("child2");
 
-    vector<string> traversal;
-    root.depthFirstSearch_Variant2(&traversal);
+    std::vector<std::string> traversal;
+    root.depthFirstSearch_Variant1(traversal);
 
-    for (const string& name : traversal) {
+    for (const auto& name : traversal) {
         std::cout << name << std::endl;
     }
 

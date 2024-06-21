@@ -1,5 +1,5 @@
 BUILDER_SCRIPT_PATH = scripts/BuilderGenerator.sh
-BUILD_DIR = ../../build
+BUILD_DIR = build
 
 .PHONY: all builder-generator test examples algorithms clean
 

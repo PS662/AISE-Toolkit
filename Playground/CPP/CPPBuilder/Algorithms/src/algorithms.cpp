@@ -1,47 +1,48 @@
-// algorithms.cpp
 #include "algorithms.hpp"
+#include <memory>
+#include <vector>
+#include <string>
 
-Algorithms::Algorithms(string str) : name(str) {}
+class AlgorithmsImpl : public BaseObjectImpl {
+public:
+    std::string name;
+    std::vector<std::shared_ptr<AlgorithmsImpl>> children;
 
-Algorithms::~Algorithms() {
-    for (Algorithms* child : children) {
-        delete child;
+    explicit AlgorithmsImpl(std::string str = "") : name(std::move(str)) {}
+
+    void addChild(std::string name) {
+        children.push_back(std::make_shared<AlgorithmsImpl>(name));
     }
-}
 
-vector<string> Algorithms::depthFirstSearch_Variant1(vector<string>* array) {
-    if (children.empty())
-        return {};
-
-    array->push_back(name);
-
-    for (Algorithms* child : children) {
-        vector<Algorithms*> stack;
-        stack.push_back(child);
-
-        while (!stack.empty()) {
-            Algorithms* node = stack.back();
-            stack.pop_back();
-            array->push_back(node->name);
-
-            for (auto it = node->children.rbegin(); it != node->children.rend(); ++it) {
-                stack.push_back(*it);
-            }
+    std::vector<std::string> depthFirstSearch_Variant1(std::vector<std::string>& array) {
+        array.push_back(name); // pre-order
+        for (const auto& child : children) {
+            child->depthFirstSearch_Variant1(array);
         }
+        return array;
     }
-    return *array;
+
+    std::vector<std::string> depthFirstSearch_Variant2(std::vector<std::string>& array) {
+        for (const auto& child : children) {
+            child->depthFirstSearch_Variant2(array);
+        }
+        array.push_back(name); // post-order
+        return array;
+    }
+};
+
+Algorithms::Algorithms() { m_pImpl = std::make_shared<AlgorithmsImpl>(""); }
+Algorithms::~Algorithms() {}
+
+std::vector<std::string> Algorithms::depthFirstSearch_Variant1(std::vector<std::string>& array) {
+    return std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->depthFirstSearch_Variant1(array);
 }
 
-vector<string> Algorithms::depthFirstSearch_Variant2(vector<string>* array) {
-    array->push_back(name);
-    for (Algorithms* child : children) {
-        child->depthFirstSearch_Variant2(array);
-    }
-    return *array;
+std::vector<std::string> Algorithms::depthFirstSearch_Variant2(std::vector<std::string>& array) {
+    return std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->depthFirstSearch_Variant2(array);
 }
 
-Algorithms* Algorithms::addChild(string name) {
-    Algorithms* child = new Algorithms(name);
-    children.push_back(child);
-    return this;
+Algorithms& Algorithms::addChild(std::string name) {
+    std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->addChild(name);
+    return *this;
 }

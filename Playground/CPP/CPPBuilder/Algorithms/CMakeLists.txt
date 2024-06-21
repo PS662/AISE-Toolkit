@@ -7,16 +7,20 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/algorithms/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/algorithms/bin)
 
 # Generate the shared library from sources
-# Name the library after the project, which is 'Algorithms'
 add_library(Algorithms SHARED src/algorithms.cpp)
+# add_library(Algorithms SHARED src/algorithms.cpp src/graph.cpp src/data_structures.cpp)
 target_include_directories(Algorithms PUBLIC include)
 
 # Conditional build for examples
 if(WITH_EXAMPLES)
-    # Add executables for examples
     add_executable(example_algorithms examples/example_algorithms.cpp)
     target_link_libraries(example_algorithms Algorithms)
     install(TARGETS example_algorithms
+            RUNTIME DESTINATION bin)
+    
+    add_executable(example_base_object examples/example_base_object.cpp)
+    target_link_libraries(example_base_object Algorithms)  # Link to Algorithms for demonstration
+    install(TARGETS example_base_object
             RUNTIME DESTINATION bin)
 endif()
 
@@ -34,6 +38,12 @@ if (WITH_TESTS)
     add_executable(algorithms_test tests/algorithms_test.cpp)
     target_link_libraries(algorithms_test Algorithms gtest_main)
     add_test(NAME algorithms_test COMMAND algorithms_test)
-    install(TARGETS algorithms_test 
+    install(TARGETS algorithms_test
+            RUNTIME DESTINATION bin/tests)
+    
+    add_executable(base_object_test tests/base_object_test.cpp)
+    target_link_libraries(base_object_test Algorithms gtest_main)
+    add_test(NAME base_object_test COMMAND base_object_test)
+    install(TARGETS base_object_test
             RUNTIME DESTINATION bin/tests)
 endif()
