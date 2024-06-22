@@ -1,48 +1,41 @@
 #include "algorithms.hpp"
 #include <memory>
 #include <vector>
-#include <string>
+#include <list>
+#include <iostream>
 
 class AlgorithmsImpl : public BaseObjectImpl {
 public:
-    std::string name;
-    std::vector<std::shared_ptr<AlgorithmsImpl>> children;
+    std::vector<std::list<int>> adjacencyList;  // Example data structure for graph representation
 
-    explicit AlgorithmsImpl(std::string str = "") : name(std::move(str)) {}
+    void depthFirstSearch(const DataStructure<int>& graph, size_t startNode, std::vector<bool>& visited) {
+        // Simple DFS implementation
+        visited[startNode] = true;
+        std::cout << startNode << " ";  // Output the node
 
-    void addChild(std::string name) {
-        children.push_back(std::make_shared<AlgorithmsImpl>(name));
-    }
-
-    std::vector<std::string> depthFirstSearch_Variant1(std::vector<std::string>& array) {
-        array.push_back(name); // pre-order
-        for (const auto& child : children) {
-            child->depthFirstSearch_Variant1(array);
+        for (int adj : graph.getEdges(startNode)) {
+            if (!visited[adj]) {
+                depthFirstSearch(graph, adj, visited);
+            }
         }
-        return array;
-    }
-
-    std::vector<std::string> depthFirstSearch_Variant2(std::vector<std::string>& array) {
-        for (const auto& child : children) {
-            child->depthFirstSearch_Variant2(array);
-        }
-        array.push_back(name); // post-order
-        return array;
     }
 };
 
-Algorithms::Algorithms() { m_pImpl = std::make_shared<AlgorithmsImpl>(""); }
-Algorithms::~Algorithms() {}
-
-std::vector<std::string> Algorithms::depthFirstSearch_Variant1(std::vector<std::string>& array) {
-    return std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->depthFirstSearch_Variant1(array);
+template <typename T>
+Algorithms<T>::Algorithms() {
+    this->m_pImpl = std::make_shared<AlgorithmsImpl>();  // Correct instantiation
 }
 
-std::vector<std::string> Algorithms::depthFirstSearch_Variant2(std::vector<std::string>& array) {
-    return std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->depthFirstSearch_Variant2(array);
+template <typename T>
+void Algorithms<T>::depthFirstSearch(const DataStructure<T>& graph, size_t startNode) {
+    std::vector<bool> visited(graph.size(), false);  // Tracking visited nodes
+    std::dynamic_pointer_cast<AlgorithmsImpl>(this->m_pImpl)->depthFirstSearch(graph, startNode, visited);
 }
 
-Algorithms& Algorithms::addChild(std::string name) {
-    std::dynamic_pointer_cast<AlgorithmsImpl>(m_pImpl)->addChild(name);
-    return *this;
+template <typename T>
+Algorithms<T>::~Algorithms() {
+    // Destructor implementation, even if empty
 }
+
+// Explicit instantiation for common types used
+template class Algorithms<int>;

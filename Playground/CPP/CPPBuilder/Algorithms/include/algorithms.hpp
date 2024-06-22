@@ -1,18 +1,15 @@
 #pragma once
 
 #include "base_object.hpp"
-#include <vector>
-#include <string>
+#include "data_structures.hpp"
 
 class AlgorithmsImpl;
 
-class Algorithms : public BaseObject<Algorithms> {
-    friend class AlgorithmsImpl;
+template <typename T>
+class Algorithms : public BaseObject<Algorithms<T>> {
 public:
     Algorithms();
-    ~Algorithms();
+    virtual ~Algorithms();
 
-    std::vector<std::string> depthFirstSearch_Variant1(std::vector<std::string>& array);
-    std::vector<std::string> depthFirstSearch_Variant2(std::vector<std::string>& array);
-    Algorithms& addChild(std::string name);
+    void depthFirstSearch(const DataStructure<T>& graph, size_t startNode);
 };
