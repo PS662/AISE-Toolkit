@@ -6,8 +6,6 @@
 
 class AlgorithmsImpl : public BaseObjectImpl {
 public:
-    std::vector<std::list<int>> adjacencyList;  // Example data structure for graph representation
-
     void depthFirstSearch(const DataStructure<int>& graph, size_t startNode, std::vector<bool>& visited) {
         // Simple DFS implementation
         visited[startNode] = true;
@@ -27,14 +25,13 @@ Algorithms<T>::Algorithms() {
 }
 
 template <typename T>
-void Algorithms<T>::depthFirstSearch(const DataStructure<T>& graph, size_t startNode) {
-    std::vector<bool> visited(graph.size(), false);  // Tracking visited nodes
-    std::dynamic_pointer_cast<AlgorithmsImpl>(this->m_pImpl)->depthFirstSearch(graph, startNode, visited);
+Algorithms<T>::~Algorithms() {
 }
 
 template <typename T>
-Algorithms<T>::~Algorithms() {
-    // Destructor implementation, even if empty
+void Algorithms<T>::depthFirstSearch(const DataStructure<T>& graph, size_t startNode) {
+    std::vector<bool> visited(graph.size(), false);  // Tracking visited nodes
+    std::dynamic_pointer_cast<AlgorithmsImpl>(this->m_pImpl)->depthFirstSearch(graph, startNode, visited);
 }
 
 // Explicit instantiation for common types used
