@@ -6,10 +6,11 @@
 class AlgorithmsImpl;
 
 template <typename T>
-class Algorithms : public BaseObject<Algorithms<T>> {
+class Algorithms : public BaseObject<Algorithms<T>>
+{
 public:
     Algorithms();
     virtual ~Algorithms();
 
-    void depthFirstSearch(const Graph<T>& graph, size_t startNode);
+    void depthFirstSearch(const Graph<T> &graph, size_t startNode);
 };

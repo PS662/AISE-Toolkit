@@ -5,7 +5,8 @@
 class BaseObjectImpl;
 
 template <typename Derived>
-class BaseObject {
+class BaseObject
+{
 protected:
     static std::shared_ptr<Derived> instance;
     static std::once_flag initFlag;
@@ -17,38 +18,45 @@ protected:
 
 public:
     // Thread-safe lazy initialization for singleton instance
-    static std::shared_ptr<Derived> GetInstance(bool createNew = false) {
-        if (createNew) {
+    static std::shared_ptr<Derived> GetInstance(bool createNew = false)
+    {
+        if (createNew)
+        {
             // This is for creating a new independent instance
             return std::make_shared<Derived>();
-        } else {
+        }
+        else
+        {
             // Ensures only one singleton instance is created and used
-            std::call_once(initFlag, []() {
-                instance = std::make_shared<Derived>();
-            });
+            std::call_once(initFlag, []()
+                           { instance = std::make_shared<Derived>(); });
             return instance;
         }
     }
 
     virtual ~BaseObject() = default;
 
-    #ifdef USE_MEYERS_SINGLETON
+#ifdef USE_MEYERS_SINGLETON
     /**
      * @brief Version using Meyers' Singleton pattern
      *
      * This version is not chosen because it enforces a single instance without
-     * providing flexibility for testing without much wizardry, which I do not wish to perform. 
+     * providing flexibility for testing without much wizardry, which I do not wish to perform.
      * The following differs slightly as it provides way to create new instances.
      */
-    static Derived& GetInstance_Meyers(bool createNew = false) {
-        if (createNew) {
+    static Derived &GetInstance_Meyers(bool createNew = false)
+    {
+        if (createNew)
+        {
             return *(new Derived()); // Creates a new instance each time if requested
-        } else {
+        }
+        else
+        {
             static Derived instance; // Meyers' Singleton pattern, thread-safe
             return instance;
         }
     }
-    #endif
+#endif
 };
 
 // Initialize static members
@@ -58,7 +66,8 @@ std::shared_ptr<Derived> BaseObject<Derived>::instance = nullptr;
 template <typename Derived>
 std::once_flag BaseObject<Derived>::initFlag;
 
-class BaseObjectImpl {
+class BaseObjectImpl
+{
 public:
     virtual ~BaseObjectImpl() = default;
 };
