@@ -1,10 +1,10 @@
 #include "algorithms.hpp"
-#include "data_structures.hpp"
+#include "graph.hpp"
 #include <gtest/gtest.h>
 #include <list>
 
 TEST(AlgorithmsTest, DepthFirstSearch) {
-    DataStructure<int> graph;
+    Graph<int> graph;
     // Setting up a simple graph
     graph.addNode({1});      // Node 0 is connected to Node 1
     graph.addNode({2});      // Node 1 is connected to Node 2

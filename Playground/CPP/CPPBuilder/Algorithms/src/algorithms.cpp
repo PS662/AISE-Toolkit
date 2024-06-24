@@ -6,7 +6,7 @@
 
 class AlgorithmsImpl : public BaseObjectImpl {
 public:
-    void depthFirstSearch(const DataStructure<int>& graph, size_t startNode, std::vector<bool>& visited) {
+    void depthFirstSearch(const Graph<int>& graph, size_t startNode, std::vector<bool>& visited) {
         // Simple DFS implementation
         visited[startNode] = true;
         std::cout << startNode << " ";  // Output the node
@@ -29,7 +29,7 @@ Algorithms<T>::~Algorithms() {
 }
 
 template <typename T>
-void Algorithms<T>::depthFirstSearch(const DataStructure<T>& graph, size_t startNode) {
+void Algorithms<T>::depthFirstSearch(const Graph<T>& graph, size_t startNode) {
     std::vector<bool> visited(graph.size(), false);  // Tracking visited nodes
     std::dynamic_pointer_cast<AlgorithmsImpl>(this->m_pImpl)->depthFirstSearch(graph, startNode, visited);
 }

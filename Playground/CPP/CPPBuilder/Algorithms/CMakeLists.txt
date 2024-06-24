@@ -8,7 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/algorithms/bin)
 
 # Generate the shared library from sources
 add_library(Algorithms SHARED src/algorithms.cpp)
-# add_library(Algorithms SHARED src/algorithms.cpp src/graph.cpp src/data_structures.cpp)
+# add_library(Algorithms SHARED src/algorithms.cpp src/graph.cpp src/graph.cpp)
 target_include_directories(Algorithms PUBLIC include)
 
 # Conditional build for examples

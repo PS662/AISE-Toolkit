@@ -4,7 +4,7 @@
 #include <list>
 
 template<typename T>
-class DataStructure {
+class Graph {
 public:
     using ContainerType = std::vector<std::list<T>>;
 

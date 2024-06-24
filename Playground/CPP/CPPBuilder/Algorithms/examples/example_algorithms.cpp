@@ -1,10 +1,10 @@
 #include "algorithms.hpp"
-#include "data_structures.hpp"
+#include "graph.hpp"
 #include <iostream>
 #include <list>
 
 int main() {
-    DataStructure<int> graph;
+    Graph<int> graph;
     // Simulating a graph: adjacency list representation
     // Graph structure:
     // 0 -> 1

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "base_object.hpp"
-#include "data_structures.hpp"
+#include "graph.hpp"
 
 class AlgorithmsImpl;
 
@@ -11,5 +11,5 @@ public:
     Algorithms();
     virtual ~Algorithms();
 
-    void depthFirstSearch(const DataStructure<T>& graph, size_t startNode);
+    void depthFirstSearch(const Graph<T>& graph, size_t startNode);
 };
