@@ -11,7 +11,6 @@ public:
     void dummyAlgoProcess(DataStructures<T>& ds1, DataStructures<T>& ds2)
     {
         std::cout << "Algo Impl dummy";
-        ds1.dummyFunction(ds2);
     }
 };
 

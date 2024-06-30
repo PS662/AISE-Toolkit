@@ -16,15 +16,15 @@
 #### Next-up
 - [x] Add pimpl, CRTP
 - [x] More templating, algos on templated DataStructure
-- [ ] Take out base object, every builder should be a base object
+- [x] Take out base object, every builder should be a base object
 - [ ] Branch out DS wrappers, clubbed with their algos 
     - [ ] Graphs 
+        - [x] Remove stl from headers
     - [ ] Matrix
     - [ ] Queues 
     - [ ] Vector
     - [ ] LinkedList
 - [ ] Add Algorithms, acts on branched out DS
-    - [ ] DFS
     - [ ] GEMM + CONV
     - [ ] SYCL, Cutlass
     - [ ] Add Cutlass example
