@@ -1,10 +1,10 @@
 BUILDER_SCRIPT_PATH = scripts/BuilderGenerator.sh
 BUILD_DIR = build
 
-.PHONY: all builder-generator test examples algorithms clean
+.PHONY: all builder-generator test examples base clean
 
 # The all target
-all: algorithms examples test
+all: base examples test
 
 # The builder target
 builder-generator:
@@ -29,8 +29,8 @@ examples:
 	@cmake -S . -B $(BUILD_DIR) -DWITH_EXAMPLES=ON
 	@cmake --build $(BUILD_DIR)
 
-algorithms:
-	@cmake -S . -B $(BUILD_DIR) -DWITH_Algorithms=ON -DWITH_EXAMPLES=OFF -DWITH_TESTS=OFF -DWITH_Builder1=OFF -DWITH_Builder2=OFF
+base:
+	@cmake -S . -B $(BUILD_DIR) -DWITH_BaseBuilders=ON -DWITH_EXAMPLES=OFF -DWITH_TESTS=OFF -DWITH_Builder1=OFF -DWITH_Builder2=OFF
 	@cmake --build $(BUILD_DIR)
 
 # The install target to install artifacts

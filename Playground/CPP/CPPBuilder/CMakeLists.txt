@@ -21,8 +21,8 @@ if (WITH_Builder2)
     add_subdirectory(Builder2)
 endif()
 
-if (WITH_Algorithms)
-    add_subdirectory(Algorithms)
+if (WITH_BaseBuilders)
+    add_subdirectory(BaseBuilders)
 endif()
 
 # Documentation with Doxygen, conditional on WITH_DOCS

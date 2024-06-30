@@ -3,7 +3,7 @@
         "-DCPPBuilder_INSTALL_PATH=${workspaceFolder}/Playground/Toys/CPPBuilderDemo/CPPBuilderLib",
         "-DWITH_Builder1=ON",
         "-DWITH_Builder2=ON",
-        "-DWITH_Algorithms=ON",
+        "-DWITH_BaseBuilders=ON",
         "-DWITH_TESTS=ON",
         "-DWITH_EXAMPLES=ON",
         "-DWITH_MEYERS_SINGLETON=ON",
