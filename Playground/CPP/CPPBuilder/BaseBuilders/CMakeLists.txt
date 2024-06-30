@@ -45,4 +45,10 @@ if (WITH_TESTS)
     add_test(NAME base_object_test COMMAND base_object_test)
     install(TARGETS base_object_test
             RUNTIME DESTINATION bin/tests)
+
+    add_executable(graph_test tests/graph_test.cpp)
+    target_link_libraries(graph_test BaseBuilders gtest_main)
+    add_test(NAME graph_test COMMAND graph_test)
+    install(TARGETS graph_test
+            RUNTIME DESTINATION bin/tests)
 endif()

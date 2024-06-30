@@ -20,6 +20,9 @@
 - [ ] Branch out DS wrappers, clubbed with their algos 
     - [ ] Graphs 
         - [x] Remove stl from headers
+        - [ ] Proper access modifiers, remove friend interface class from impl.
+        - [ ] Unit tests failing, GetInstance does not work
+        - [ ] Fix Data Structure interface (should be abstract).
     - [ ] Matrix
     - [ ] Queues 
     - [ ] Vector

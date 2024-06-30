@@ -8,6 +8,11 @@ template <typename T>
 class GraphImpl : public BaseObjectImpl
 {
 public:
+    friend class Graph<T>;
+    GraphImpl() = default;
+    virtual ~GraphImpl() = default;
+
+protected:
     using ContainerType = std::vector<std::list<T>>;
     ContainerType adjacencyList;
 
