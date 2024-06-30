@@ -19,8 +19,7 @@ int main()
     graph.addNode({3});    // Node 3 has a self-loop
 
     Algorithms<int> algo;
-    std::cout << "Depth-First Traversal starting from vertex 0:" << std::endl;
-    algo.depthFirstSearch(graph, 0);
+    algo.dummyAlgoProcess(graph, graph);
 
     return 0;
 }

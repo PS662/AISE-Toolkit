@@ -24,7 +24,7 @@
     - [ ] Vector
     - [ ] LinkedList
 - [ ] Add Algorithms, acts on branched out DS
-    - [x] DFS
+    - [ ] DFS
     - [ ] GEMM + CONV
     - [ ] SYCL, Cutlass
     - [ ] Add Cutlass example

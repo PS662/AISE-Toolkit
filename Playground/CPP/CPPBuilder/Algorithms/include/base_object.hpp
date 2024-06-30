@@ -30,8 +30,8 @@ public:
             // Ensures only one singleton instance is created and used
             std::call_once(initFlag, []()
                            { instance = std::make_shared<Derived>(); });
-            return instance;
         }
+        return instance;
     }
 
     virtual ~BaseObject() = default;

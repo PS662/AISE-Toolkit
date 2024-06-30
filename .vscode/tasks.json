@@ -4,7 +4,7 @@
         {
             "label": "Run Tests",
             "type": "shell",
-            "command": "cmake --build ${workspaceFolder}/build && ctest --verbose",
+            "command": "cmake --build ${workspaceFolder}/Playground/CPP/CPPBuilder/build && ctest --verbose",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -14,7 +14,7 @@
         {
             "label": "Generate Documentation",
             "type": "shell",
-            "command": "cmake --build ${workspaceFolder}/build --target doc_doxygen",
+            "command": "cmake --build ${workspaceFolder}/Playground/CPP/CPPBuilder/build --target doc_doxygen",
             "group": {
                 "kind": "build",
                 "isDefault": false

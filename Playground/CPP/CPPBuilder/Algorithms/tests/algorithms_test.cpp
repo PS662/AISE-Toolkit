@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <list>
 
-TEST(AlgorithmsTest, DepthFirstSearch)
+TEST(AlgorithmsTest, dummyFunction)
 {
     Graph<int> graph;
     // Setting up a simple graph
@@ -13,12 +13,6 @@ TEST(AlgorithmsTest, DepthFirstSearch)
     graph.addNode({3});    // Node 3 has a self-loop
 
     Algorithms<int> algo;
-
-    // Since the output is directly printed, to test, we would normally need to capture stdout
-    // For simplicity, assume correct functionality here or use a method to capture and compare output.
-    std::cout << "Starting DFS test output:" << std::endl;
-    algo.depthFirstSearch(graph, 0);
-
-    // Ideally, you'd capture output and verify it matches expected traversal:
-    // Expected order: 0 1 2 3
+    std::cout << "Starting dummy algo test output:" << std::endl;
+    algo.dummyAlgoProcess(graph, graph);
 }

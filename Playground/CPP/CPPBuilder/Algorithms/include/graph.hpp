@@ -1,39 +1,28 @@
 #pragma once
 
-#include <vector>
 #include <list>
+#include <vector>
 
-#include "base_object.hpp"
+#include "algorithms.hpp"
+#include "data_structures.hpp"
 
 template <typename T>
-class Graph
+class Graph : public DataStructures<T>
 {
 public:
-    using ContainerType = std::vector<std::list<T>>;
+    Graph();
+    virtual ~Graph();
 
-private:
-    ContainerType data;
+    void addNode(const std::list<T>& edges);
+    const std::list<T>& getEdges(size_t nodeIndex) const;
+    size_t size() const;
 
-public:
-    // Adds a node with edges
-    void addNode(const std::list<T> &edges)
-    {
-        data.push_back(edges);
+    void addData(T data) override {
+        // Implementation for adding data to the graph
     }
 
-    const ContainerType &getContainer() const
-    {
-        return data;
-    }
-
-    // Access specific node's edges
-    const std::list<T> &getEdges(size_t nodeIndex) const
-    {
-        return data.at(nodeIndex);
-    }
-
-    size_t size() const
-    {
-        return data.size();
+    void dummyFunction(const DataStructures<T>& other) override {
+        // Implementation to process two DataStructures
+        // Example operation
     }
 };

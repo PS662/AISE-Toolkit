@@ -4,29 +4,21 @@
 #include <list>
 #include <iostream>
 
+template<typename T>
 class AlgorithmsImpl : public BaseObjectImpl
 {
 public:
-    void depthFirstSearch(const Graph<int> &graph, size_t startNode, std::vector<bool> &visited)
+    void dummyAlgoProcess(DataStructures<T>& ds1, DataStructures<T>& ds2)
     {
-        // Simple DFS implementation
-        visited[startNode] = true;
-        std::cout << startNode << " "; // Output the node
-
-        for (int adj : graph.getEdges(startNode))
-        {
-            if (!visited[adj])
-            {
-                depthFirstSearch(graph, adj, visited);
-            }
-        }
+        std::cout << "Algo Impl dummy";
+        ds1.dummyFunction(ds2);
     }
 };
 
 template <typename T>
 Algorithms<T>::Algorithms()
 {
-    this->m_pImpl = std::make_shared<AlgorithmsImpl>(); // Correct instantiation
+    this->m_pImpl = std::make_shared<AlgorithmsImpl<T>>(); // Correct instantiation with template
 }
 
 template <typename T>
@@ -35,11 +27,14 @@ Algorithms<T>::~Algorithms()
 }
 
 template <typename T>
-void Algorithms<T>::depthFirstSearch(const Graph<T> &graph, size_t startNode)
-{
-    std::vector<bool> visited(graph.size(), false); // Tracking visited nodes
-    std::dynamic_pointer_cast<AlgorithmsImpl>(this->m_pImpl)->depthFirstSearch(graph, startNode, visited);
+void Algorithms<T>::dummyAlgoProcess(DataStructures<T>& ds1, DataStructures<T>& ds2) {
+    std::cout << "Algo Interface dummy" << std::endl;
+    auto impl = std::dynamic_pointer_cast<AlgorithmsImpl<T>>(this->m_pImpl);
+    if (impl) {
+        impl->dummyAlgoProcess(ds1, ds2);
+    }
 }
 
 // Explicit instantiation for common types used
 template class Algorithms<int>;
+template class AlgorithmsImpl<int>; // Ensure the implementation class is also instantiated.

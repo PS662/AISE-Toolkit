@@ -7,7 +7,7 @@
         "-DWITH_TESTS=ON",
         "-DWITH_EXAMPLES=ON",
         "-DWITH_MEYERS_SINGLETON=ON",
-        "-DWITH_DOCS=ON"
+        "-DWITH_DOCS=OFF"
     ],
     "cmake.buildDirectory": "${workspaceFolder}/Playground/CPP/CPPBuilder/build",
     "cmake.sourceDirectory": "${workspaceFolder}/Playground/CPP/CPPBuilder",
