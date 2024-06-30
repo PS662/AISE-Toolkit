@@ -13,6 +13,20 @@ protected:
     }
 };
 
+
+TEST_F(GraphTest, SingletonInstance) {
+    auto instance1 = std::static_pointer_cast<Graph<int>>(Graph<int>::GetInstance());
+    auto instance2 = std::static_pointer_cast<Graph<int>>(Graph<int>::GetInstance());
+    EXPECT_EQ(instance1, instance2);
+
+    auto newInstance = std::static_pointer_cast<Graph<int>>(Graph<int>::GetInstance(true));
+    EXPECT_NE(instance1, newInstance);
+
+    newInstance->addData(4);
+    //EXPECT_TRUE(newInstance->search(4));
+    //EXPECT_FALSE(instance1->search(4)); // Should not find 4 in the original singleton instance
+}
+
 TEST_F(GraphTest, AddData) {
     graph.addData(4);
     EXPECT_EQ(4, graph.size());  // Expecting 4 elements after adding one more
