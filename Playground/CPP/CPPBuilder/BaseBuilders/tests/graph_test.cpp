@@ -24,7 +24,7 @@ TEST_F(GraphTest, SingletonInstance) {
 
     newInstance->addData(4);
     //EXPECT_TRUE(newInstance->search(4));
-    //EXPECT_FALSE(instance1->search(4)); // Should not find 4 in the original singleton instance
+    EXPECT_FALSE(instance1->search(4)); // Should not find 4 in the original singleton instance
 }
 
 TEST_F(GraphTest, AddData) {

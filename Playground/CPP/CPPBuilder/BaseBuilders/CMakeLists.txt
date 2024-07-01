@@ -6,20 +6,33 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/bin)
 
+find_package(SYCL REQUIRED)
+
 # Generate the shared library from sources
-add_library(BaseBuilders SHARED src/algorithms.cpp src/graph.cpp)
+add_library(BaseBuilders SHARED src/algorithms.cpp src/graph.cpp src/matrix.cpp)
 target_include_directories(BaseBuilders PUBLIC include)
+target_link_libraries(BaseBuilders PUBLIC SYCL::SYCL)
 
 # Conditional build for examples
 if(WITH_EXAMPLES)
+    add_executable(example_base_object examples/example_base_object.cpp)
+    target_link_libraries(example_base_object BaseBuilders)  # Link to BaseBuilders for demonstration
+    install(TARGETS example_base_object
+            RUNTIME DESTINATION bin)
+
     add_executable(example_algorithms examples/example_algorithms.cpp)
     target_link_libraries(example_algorithms BaseBuilders)
     install(TARGETS example_algorithms
             RUNTIME DESTINATION bin)
-    
-    add_executable(example_base_object examples/example_base_object.cpp)
-    target_link_libraries(example_base_object BaseBuilders)  # Link to BaseBuilders for demonstration
-    install(TARGETS example_base_object
+
+    add_executable(example_graph examples/example_graph.cpp)
+    target_link_libraries(example_graph BaseBuilders)
+    install(TARGETS example_graph
+            RUNTIME DESTINATION bin)
+
+    add_executable(example_matrix examples/example_matrix.cpp)
+    target_link_libraries(example_matrix BaseBuilders)
+    install(TARGETS example_matrix
             RUNTIME DESTINATION bin)
 endif()
 
@@ -50,5 +63,11 @@ if (WITH_TESTS)
     target_link_libraries(graph_test BaseBuilders gtest_main)
     add_test(NAME graph_test COMMAND graph_test)
     install(TARGETS graph_test
+            RUNTIME DESTINATION bin/tests)
+
+    add_executable(matrix_test tests/matrix_test.cpp)
+    target_link_libraries(matrix_test BaseBuilders gtest_main)
+    add_test(NAME matrix_test COMMAND matrix_test)
+    install(TARGETS matrix_test
             RUNTIME DESTINATION bin/tests)
 endif()

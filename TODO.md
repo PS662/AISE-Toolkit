@@ -18,17 +18,15 @@
 - [x] More templating, algos on templated DataStructure
 - [x] Take out base object, every builder should be a base object
 - [ ] Branch out DS wrappers, clubbed with their algos 
-    - [ ] Graphs 
+    - [x] Graphs 
         - [x] Remove stl from headers
-        - [ ] Proper access modifiers, remove friend interface class from impl.
-        - [ ] Unit tests failing, GetInstance does not work
-        - [ ] Fix Data Structure interface (should be abstract).
     - [ ] Matrix
     - [ ] Queues 
     - [ ] Vector
     - [ ] LinkedList
 - [ ] Add Algorithms, acts on branched out DS
-    - [ ] GEMM + CONV
+    - [x] GEMM
+    - [ ] CONV
     - [ ] SYCL, Cutlass
     - [ ] Add Cutlass example
     - [ ] Add linear algebra implementation algorithms, i.e: eigenvectors, PCA etc.
@@ -41,6 +39,9 @@
   - [ ] Benchmark other algos
 
 #### FIXMES
+- [ ] Proper access modifiers, remove friend interface class from impl.
+- [ ] Unit tests failing, GetInstance does not work, does not add to instance
+- [ ] Fix Data Structure interface (should be abstract).
 - [x] Only install required libs, deps should not be pulled in
 - [x] Add cmake options
 - [ ] Fix Doxygen generation
