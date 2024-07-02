@@ -6,12 +6,16 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/base_builders/bin)
 
-find_package(SYCL REQUIRED)
 
 # Generate the shared library from sources
 add_library(BaseBuilders SHARED src/algorithms.cpp src/graph.cpp src/matrix.cpp)
 target_include_directories(BaseBuilders PUBLIC include)
-target_link_libraries(BaseBuilders PUBLIC SYCL::SYCL)
+
+find_package(IntelDPCPP)
+if (IntelDPCPP_FOUND)
+    add_definitions(-DSYCL)
+    target_link_libraries(BaseBuilders PUBLIC SYCL::SYCL)
+endif()
 
 # Conditional build for examples
 if(WITH_EXAMPLES)

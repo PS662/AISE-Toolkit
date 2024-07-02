@@ -14,6 +14,7 @@ TEST(AlgorithmsTest, dummyFunction)
 
 TEST(AlgorithmsTest, GEMMFunction)
 {
+#ifdef SYCL
     Matrix<std::vector<int>> A;
     Matrix<std::vector<int>> B;
     Matrix<std::vector<int>> C;
@@ -30,4 +31,5 @@ TEST(AlgorithmsTest, GEMMFunction)
     EXPECT_EQ(C.size(), 4); // 2 rows * 2 columns
     EXPECT_EQ(C.search({58, 64}), true); // Check if one of the results is correct
     EXPECT_EQ(C.search({139, 154}), true); // Check if another result is correct
+#endif
 }

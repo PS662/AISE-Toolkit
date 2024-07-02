@@ -8,6 +8,7 @@
 - [ ] Segmentation
 - [ ] Detection
 - [ ] CUDA examples
+- [ ] ONNX
 
 ## Playground
 
@@ -34,6 +35,7 @@
 - [ ] Messaging Builder
 - [ ] Threadpool Builder
     - [ ] Async TBB
+- [ ] Video Standards
 - [ ] Add benchmarking
   - [ ] Benchmark GEMM and CONV
   - [ ] Benchmark other algos

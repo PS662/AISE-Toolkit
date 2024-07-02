@@ -24,6 +24,7 @@ int doGraph()
 
 int doGEMM()
 {
+#ifdef SYCL
     Matrix<std::vector<int>> A;
     Matrix<std::vector<int>> B;
     Matrix<std::vector<int>> C;
@@ -45,7 +46,7 @@ int doGEMM()
         }
         std::cout << std::endl;
     }
-
+#endif
     return 0;
 }
 

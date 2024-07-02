@@ -6,7 +6,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(library)
 include(configuration)
 
-find_package(SYCL REQUIRED)
 
 # Google Test support, conditional on WITH_TESTS flag
 if(WITH_TESTS)

@@ -4,6 +4,9 @@
 #include <list>
 #include <iostream>
 
+#ifdef SYCL
+#include <CL/sycl.hpp>
+#endif
 template<typename T>
 class AlgorithmsImpl : public BaseObjectImpl
 {
@@ -13,12 +16,12 @@ public:
         std::cout << "Algo Impl dummy";
     }
 
-    void GEMM(const Matrix<std::vector<T>>& A, const Matrix<std::vector<T>>& B, Matrix<std::vector<T>>& C)
+    void GEMM(const Matrix<T>& A, const Matrix<T>& B, Matrix<T>& C)
     {
-        // Ensure matrices A and B are compatible for multiplication
-        auto implA = std::dynamic_pointer_cast<MatrixImpl<std::vector<T>>>(A.m_pImpl);
-        auto implB = std::dynamic_pointer_cast<MatrixImpl<std::vector<T>>>(B.m_pImpl);
-        auto implC = std::dynamic_pointer_cast<MatrixImpl<std::vector<T>>>(C.m_pImpl);
+#ifdef SYCL
+        auto implA = std::dynamic_pointer_cast<MatrixImpl<T>>(A.m_pImpl);
+        auto implB = std::dynamic_pointer_cast<MatrixImpl<T>>(B.m_pImpl);
+        auto implC = std::dynamic_pointer_cast<MatrixImpl<T>>(C.m_pImpl);
 
         if (!implA || !implB || !implC) {
             throw std::runtime_error("Invalid matrix implementations");
@@ -32,11 +35,9 @@ public:
             throw std::runtime_error("Matrix dimensions are not compatible for GEMM");
         }
 
-        // Resize C to appropriate dimensions
         implC->matrixData.resize(M, std::vector<T>(N, 0));
         implC->cols = N;
 
-        // SYCL GEMM implementation
         sycl::queue q;
 
         {
@@ -61,6 +62,7 @@ public:
             });
         }
         q.wait();
+#endif
     }
 };
 
@@ -85,7 +87,7 @@ void Algorithms<T>::dummyAlgoProcess(DataStructures<T>& ds1, DataStructures<T>& 
 }
 
 template <typename T>
-void Algorithms<T>::GEMM(const Matrix<std::vector<T>>& A, const Matrix<std::vector<T>>& B, Matrix<std::vector<T>>& C) {
+void Algorithms<T>::GEMM(const Matrix<T>& A, const Matrix<T>& B, Matrix<T>& C) {
     auto impl = std::dynamic_pointer_cast<AlgorithmsImpl<T>>(this->m_pImpl);
     if (impl) {
         impl->GEMM(A, B, C);
