@@ -13,7 +13,7 @@ target_include_directories(BaseBuilders PUBLIC include)
 
 find_package(IntelDPCPP)
 if (IntelDPCPP_FOUND)
-    add_definitions(-DSYCL)
+    add_definitions(-DWITH_INTEL_DPCPP)
     target_link_libraries(BaseBuilders PUBLIC SYCL::SYCL)
 endif()
 

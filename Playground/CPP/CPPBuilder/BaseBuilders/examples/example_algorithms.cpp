@@ -24,7 +24,7 @@ int doGraph()
 
 int doGEMM()
 {
-#ifdef SYCL
+#ifdef WITH_INTEL_DPCPP
     Matrix<std::vector<int>> A;
     Matrix<std::vector<int>> B;
     Matrix<std::vector<int>> C;

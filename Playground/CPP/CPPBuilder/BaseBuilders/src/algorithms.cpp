@@ -4,7 +4,7 @@
 #include <list>
 #include <iostream>
 
-#ifdef SYCL
+#ifdef WITH_INTEL_DPCPP
 #include <CL/sycl.hpp>
 #endif
 template<typename T>
@@ -18,7 +18,7 @@ public:
 
     void GEMM(const Matrix<T>& A, const Matrix<T>& B, Matrix<T>& C)
     {
-#ifdef SYCL
+#ifdef WITH_INTEL_DPCPP
         auto implA = std::dynamic_pointer_cast<MatrixImpl<T>>(A.m_pImpl);
         auto implB = std::dynamic_pointer_cast<MatrixImpl<T>>(B.m_pImpl);
         auto implC = std::dynamic_pointer_cast<MatrixImpl<T>>(C.m_pImpl);
