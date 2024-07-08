@@ -13,3 +13,7 @@ Each directory has its own README with more detailed information on the contents
 ## Contributing
 
 Feel free to fork this project and adapt the contents as you see fit. If you have suggestions or improvements, pull requests are welcome!
+
+## TODO
+
+For detailed TODOs and future plans, refer to the [TODO.md](TODO.md) file.
