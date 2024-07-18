@@ -3,4 +3,5 @@ sudo apt update
 
 sudo apt install -y build-essential cmake gdb valgrind git vim \
                     libboost-all-dev cmake-qt-gui pkg-config doxygen \
-                    clang clang-tools lcov
+                    clang clang-tools lcov curl ffmpeg ibopencv-dev \
+                    python3-opencv
