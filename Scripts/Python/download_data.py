@@ -3,32 +3,37 @@ import sys
 import subprocess
 import argparse
 
-def download_intel_sample_videos(destination_dir):
-    """Download Intel sample videos to the specified directory."""
+def download_from_git(destination_dir, git_url):
+    """Download a repository from a given Git URL to the specified directory."""
     try:
-        subprocess.run(['git', 'clone', 'https://github.com/intel-iot-devkit/sample-videos', os.path.join(destination_dir, 'sample-videos')], check=True)
-        print(f"Intel sample videos successfully cloned to {destination_dir}")
+        subprocess.run(['git', 'clone', git_url, destination_dir], check=True)
+        print(f"Repository successfully cloned to {destination_dir}")
     except subprocess.CalledProcessError as e:
-        print(f"An error occurred while cloning the Intel sample videos repository: {e}")
+        print(f"An error occurred while cloning the repository: {e}")
         sys.exit(1)
-
 
 def main():
     parser = argparse.ArgumentParser(description="Download datasets to a specified directory.")
-    parser.add_argument('--dest', type=str, help="Destination directory to download the datasets.")
-    
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--intel-sample-videos', action='store_true', help="Download Intel sample videos.")
-    group.add_argument('--download-all', action='store_true', help="Download all datasets.")
+    parser.add_argument('--dest', type=str, help="Destination directory to download the datasets. If not provided, the DATA_ROOT_DIR environment variable will be used.")
+
+    subparsers = parser.add_subparsers(dest='command', required=True, help='Sub-command help')
+
+    # Subparser for downloading from Git
+    parser_git = subparsers.add_parser('download-from-git', help='Download a repository from a Git URL')
+    parser_git.add_argument('--git-url', type=str, required=True, help='URL of the Git repository')
+    parser_git.set_defaults(func=download_from_git)
+
+    # Subparser for downloading all datasets
+    parser_all = subparsers.add_parser('download-all', help='Download all datasets')
+    parser_all.set_defaults(func=lambda args: download_from_git(args.dest, 'https://github.com/intel-iot-devkit/sample-videos'))
 
     args = parser.parse_args()
 
     # Check for the destination directory argument or environment variable
     destination_dir = args.dest or os.getenv('DATA_ROOT_DIR')
-
     if not destination_dir:
-        print("Usage: python script.py --dest <destination_directory> --intel-sample-videos")
-        print("or set the environment variable DATA_ROOT_DIR to specify the destination directory.")
+        parser.print_help()
+        print("\nError: You must specify a destination directory using --dest or set the DATA_ROOT_DIR environment variable.")
         sys.exit(1)
 
     # Create the destination directory if it doesn't exist
@@ -36,10 +41,10 @@ def main():
         os.makedirs(destination_dir)
 
     # Proceed to download the specified datasets
-    if args.intel_sample_videos:
-        download_intel_sample_videos(destination_dir)
-    elif args.download_all:
-        download_intel_sample_videos(destination_dir)
+    if args.command == 'download-from-git':
+        args.func(destination_dir, args.git_url)
+    elif args.command == 'download-all':
+        args.func(destination_dir, 'https://github.com/intel-iot-devkit/sample-videos')
 
 if __name__ == "__main__":
     main()

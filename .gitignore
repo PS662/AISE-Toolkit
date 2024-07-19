@@ -37,6 +37,10 @@ wheels/
 # Logs
 *.log
 
+# venv
+venv/
+
+# custom
 .DS_Store
 CPPBuilderLib/
 Testing/
