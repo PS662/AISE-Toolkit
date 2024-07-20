@@ -1,7 +1,11 @@
 ## Notebooks
 
 #### Next-up
-- [ ] Openvino examples
+- [x] Openvino examples
+    - [x] https://github.com/PS662/openvino_notebooks
+    - [x] https://github.com/PS662/open_model_zoo
+    - [x] https://github.com/PS662/models
+    - [x] https://github.com/PS662/openvino
 - [ ] LLMs
     - [ ] Langchain
     - [ ] Ollama
@@ -74,4 +78,4 @@
 ## Scripts
 #### Next-up
 - [ ] Webscraper
-- [ ] Dataset downloader
+- [x] Dataset downloader (Add on the go)
