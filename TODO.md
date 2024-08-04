@@ -67,14 +67,6 @@
 - [ ] Add system design implementations within this framework
 - [ ] CICD, Actions
 
-### Python
-- [ ] Stage notebooks
-- [ ] Celery + Flask
-- [ ] PyQT clients
-
-### Toys
-- [ ] Add demos
-
 ## Scripts
 #### Next-up
 - [ ] Webscraper
