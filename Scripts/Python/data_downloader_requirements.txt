@@ -6,3 +6,5 @@ pytube==15.0.0
 requests==2.32.3
 soupsieve==2.5
 urllib3==2.2.2
+pytubefix==6.8.1
+
