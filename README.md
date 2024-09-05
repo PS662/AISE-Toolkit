@@ -1,14 +1,11 @@
 # AISE-Toolkit
 
-This repository is a collection of notebooks, scripts, and educational resources I've created or collected throughout my career as an AI software engineer. 
+This sole purpose of this repo is to act as an SDK encapulsating different experiments. It enforces prototypes into a stricter reusable structure. 
 
 ## Structure
 
-- **Notebooks**: Jupyter notebooks focused on different domains.
-- **PDFs**: Contains PDFs of assignment solutions from coursework and other sources.
-- **Scripts**: Useful scripts for web development, bash scripting, and Python programming.
-
-Each directory has its own README with more detailed information on the contents and usage instructions.
+- **Playground**: The core of SDK.
+- **Scripts**: Useful scripts for.
 
 ## Contributing
 
